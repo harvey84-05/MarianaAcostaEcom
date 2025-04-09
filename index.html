@@ -9,7 +9,8 @@
 <body>
 
   <header>
-    <h1>🥊 Knockout Store</h1>
+    <h1>Knockout Store</h1>
+    <h2 class="subtitulo">Tienda de Mariana Torres</h2>
     <label for="categoria">Filtrar por categoría:</label>
     <select id="categoria" onchange="filtrarPorCategoria()">
       <option value="todos">Todos</option>
@@ -17,24 +18,24 @@
       <option value="Protección">Protección</option>
       <option value="Accesorios">Accesorios</option>
     </select>
-    <p>Equípate como campeona con nuestros mejores productos</p>
+    <div class="carrito-icono" onclick="mostrarCarrito()">
+      🛒 <span id="contador-carrito">0</span>
+    </div>
   </header>
 
-  <section id="productos"></section>
+  <main>
+    <div class="productos" id="productos"></div>
+  </main>
 
-  <section class="carrito">
-    <h2>🛒 Carrito de Compras</h2>
-    <p><strong>Productos en carrito: <span id="cantidad-carrito">0</span></strong></p>
+  <div id="carrito-popup">
+    <h3>Carrito de Compras</h3>
     <ul id="lista-carrito"></ul>
-    <p><strong>Total: $<span id="total">0.00</span></strong></p>
-    <button class="vaciar" onclick="vaciarCarrito()">🧼 Vaciar Carrito</button>
-    <button class="finalizar" onclick="finalizarCompra()">✅ Finalizar Compra</button>
-
-    <div class="pago">
-      <h3>💳 Método de pago</h3>
-      <div id="paypal-button-container" style="margin-top: 10px; display: none;"></div>
-    </div>
-  </section>
+    <p>Total: $<span id="total-carrito">0</span></p>
+    <button id="boton-comprar" onclick="finalizarCompra()" style="display: none;" class="boton-animado">Finalizar compra</button>
+    <button onclick="vaciarCarrito()" class="boton-animado">Vaciar carrito</button>
+    <button onclick="cerrarCarrito()" class="boton-animado">Cerrar</button>
+    <div id="paypal-button-container" style="margin-top: 10px; display: none;"></div>
+  </div>
 
   <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD&components=buttons,funding-eligibility"></script>
   <script src="script.js"></script>
